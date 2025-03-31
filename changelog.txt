@@ -1,2 +1,5 @@
 1.0 - initial. collects data from FastF1, gives telemetry info, head to head etc.
-To do - fix the pitstop info not found, fix the telemetry info stuck once two drivers/laps are selected. Fix the wikipedia page reading and plugin.
+To do - 
+1. fix the pitstop info not found, fix the telemetry info stuck once two drivers/laps are selected. 
+2. fix the wikipedia page reading and plugin. 
+3. complete and incorporate the prediction.py file into main logic 
