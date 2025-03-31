@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>F1 Race Report - {{ race_name }} {{ year }}</title>
+    <style>
+        .header { text-align: center; margin-bottom: 30px; }
+        .section { margin-bottom: 40px; }
+        .chart { margin: 20px 0; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 10px; border: 1px solid #ddd; text-align: left; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>{{ race_name }} Grand Prix {{ year }}</h1>
+        <h3>Comprehensive Race Analysis Report</h3>
+    </div>
+    
+    <div class="section">
+        <h2>Race Results</h2>
+        <table>
+            <tr>
+                <th>Position</th>
+                <th>Driver</th>
+                <th>Team</th>
+                <th>Time</th>
+                <th>Points</th>
+            </tr>
+            {% for result in results %}
+            <tr>
+                <td>{{ result.Position }}</td>
+                <td>{{ result.Driver }}</td>
+                <td>{{ result.Team }}</td>
+                <td>{{ result.Time }}</td>
+                <td>{{ result.Points }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    
+    <div class="section">
+        <h2>Key Statistics</h2>
+        <div class="chart">
+            <img src="{{ pace_chart }}" alt="Race Pace Distribution">
+        </div>
+        <div class="chart">
+            <img src="{{ strategy_chart }}" alt="Tire Strategy Analysis">
+        </div>
+    </div>
+</body>
+</html>
