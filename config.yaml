@@ -1,0 +1,20 @@
+cache:
+  data_dir: ./f1_cache
+  wiki_dir: ./wiki_cache
+  max_memory_items: 1000
+
+scraping:
+  user_agent: "F1AnalysisProject/1.0 (+https://github.com/arnavxox/f1-analysis)"
+  request_delay: 1.5
+
+ml_model:
+  n_estimators: 200
+  test_size: 0.2
+  random_state: 42
+
+visualization:
+  default_theme: "plotly_dark"
+  hover_bg_color: "white"
+  hover_text_color: "black"
+  export_width: 1200
+  export_height: 800
