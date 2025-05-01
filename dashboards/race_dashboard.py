@@ -166,9 +166,6 @@ def create_race_dashboard(cache):
                             ]),
                             dbc.Tab(label="Lap Time by Compound", children=[
                                 dcc.Graph(id='strategy-graph')
-                            ]),
-                            dbc.Tab(label="Pit Stops", children=[
-                                dcc.Graph(id='pitstop-graph')
                             ])
                         ])
                     ], width=12)
@@ -362,17 +359,15 @@ def create_race_dashboard(cache):
             winner_abbr = winner['Abbreviation']
             
             # Try different ways to get circuit name
-            circuit_name = "Unknown Circuit"
-            try:
-                circuit_name = session.event['CircuitName']
-            except:
-                try:
-                    circuit_name = session.event.CircuitName
-                except:
-                    try:
-                        circuit_name = session.event_name
-                    except:
-                        pass
+            circuit_name = (
+                    session.event.get('CircuitName')
+                    or session.event.get('Location')
+                    or session.event.get('Circuit')
+                    or getattr(session.event, 'CircuitName', None)
+                    or getattr(session.event, 'Location', None)
+                    or getattr(session.event, 'Circuit', None)
+                    or "Unknown Circuit"
+                )
             
             return dbc.Card([
                 dbc.CardHeader(f"{race} Grand Prix {year}", className="bg-success text-white"),
